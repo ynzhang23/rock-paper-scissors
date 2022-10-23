@@ -1,6 +1,27 @@
-let computer = getComputerChoice();
-let player = getPlayerSelection();
-let winner = declareWinner(player, computer);
+for (let i = 0; i < 5; i++) {
+    let computer = getComputerChoice();
+    let player = getPlayerSelection();
+    let winner = playRound(player, computer);
+
+    if (winner === "Computer") {
+        console.log(`You Lose! ${computer} beats ${player}`);
+    }
+    else if (winner === "Player") {
+        console.log(`You Win! ${player} beats ${computer}`);
+    }
+    else if (winner ===  "Draw") {
+        console.log(`It is a tie!`);
+    }
+
+    if (winner === "Draw") {
+        console.log(`Game ${i + 1}: Draw`);
+        i -= 1;
+    } else {
+        console.log(`Game ${i + 1}: ${winner}`);
+    }
+}
+
+
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3 + 1);
@@ -29,7 +50,7 @@ function getPlayerSelection() {
     }
 }
 
-function declareWinner(player, computer) {
+function playRound(player, computer) {
     // If playerSelection is rock
     let winner;
     if (player === "rock") {
