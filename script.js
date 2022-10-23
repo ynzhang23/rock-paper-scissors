@@ -5,11 +5,9 @@ for (let i = 0; i < 5; i++) {
 
     if (winner === "Computer") {
         console.log(`You Lose! ${computer} beats ${player}`);
-    }
-    else if (winner === "Player") {
+    } else if (winner === "Player") {
         console.log(`You Win! ${player} beats ${computer}`);
-    }
-    else if (winner ===  "Draw") {
+    } else if (winner ===  "Draw") {
         console.log(`It is a tie!`);
     }
 
