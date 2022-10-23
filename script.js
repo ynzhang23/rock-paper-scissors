@@ -1,4 +1,5 @@
 getComputerChoice();
+getPlayerSelection();
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3 + 1);
@@ -14,4 +15,20 @@ function getComputerChoice() {
             break;        
     }
     console.log(computerChoice);
+}
+
+function getPlayerSelection() {
+    let playerSelection = prompt("Input your selection: ").toLowerCase();
+    console.log(playerSelection);
+    if (playerSelection === "rock" || playerSelection ===  "paper" || playerSelection === "scissors") {
+        alert("Entry valid");
+        return playerSelection;
+    } else {
+        alert("Entry invalid");
+        getPlayerSelection();
+    }
+}
+
+function declareWinner(getPlayerSelection, ) {
+    
 }
