@@ -1,3 +1,9 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .scoreboard {
     display: flex;
     flex-direction: row;
@@ -13,4 +19,9 @@
     justify-content: center;
     align-items: center;
     padding: 30px 0;
+}
+
+.user-score,
+.computer-score {
+    margin: 0px 30px;
 }
