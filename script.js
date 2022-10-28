@@ -21,21 +21,21 @@
 
 
 
-// function getComputerChoice() {
-//     let computerChoice = Math.floor(Math.random() * 3 + 1);
-//     switch (computerChoice) {
-//         case 1:
-//             computerChoice = 'rock';
-//             break;
-//         case 2:
-//             computerChoice = 'paper';
-//             break;
-//         case 3:
-//             computerChoice = 'scissors';
-//             break;        
-//     }
-//     return computerChoice;
-// }
+function getComputerChoice() {
+    let computerChoice = Math.floor(Math.random() * 3 + 1);
+    switch (computerChoice) {
+        case 1:
+            computerChoice = 'rock';
+            break;
+        case 2:
+            computerChoice = 'paper';
+            break;
+        case 3:
+            computerChoice = 'scissors';
+            break;        
+    }
+    return computerChoice;
+}
 
 function playRound(player, computer) {
     // If playerSelection is rock
@@ -74,16 +74,21 @@ function playRound(player, computer) {
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+
 let playerSelection;
+let computerChoice = getComputerChoice();
+let winner;
 
 rock.addEventListener('click', function(){
-    return playerSelection = 'rock';
+    playerSelection = 'rock';
+    winner = playRound(playerSelection, computerChoice);
 });
-
 paper.addEventListener('click', function(){
-    return playerSelection = 'paper';
+    playerSelection = 'paper';
+    winner = playRound(playerSelection, computerChoice);
+});
+scissors.addEventListener('click', function(){
+    playerSelection = 'scissors';
+    winner = playRound(playerSelection, computerChoice);
 });
 
-scissors.addEventListener('click', function(){
-    return playerSelection = 'scissors';
-});
