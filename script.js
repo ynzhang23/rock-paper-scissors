@@ -3,92 +3,112 @@
 //     let player = getPlayerSelection();
 //     let winner = playRound(player, computer);
 
-//     if (winner === "Computer") {
-//         console.log(`You Lose! ${computer} beats ${player}`);
-//     } else if (winner === "Player") {
-//         console.log(`You Win! ${player} beats ${computer}`);
-//     } else if (winner ===  "Draw") {
-//         console.log(`It is a tie!`);
-//     }
+// if (winner === "Computer") {
+//     console.log(`You Lose! ${computer} beats ${player}`);
+// } else if (winner === "Player") {
+//     console.log(`You Win! ${player} beats ${computer}`);
+// } else if (winner ===  "Draw") {
+//     console.log(`It is a tie!`);
+// }
 
-//     if (winner === "Draw") {
-//         console.log(`Game ${i + 1}: Draw`);
-//         i -= 1;
-//     } else {
-//         console.log(`Game ${i + 1}: ${winner}`);
-//     }
+// if (winner === "Draw") {
+//     console.log(`Game ${i + 1}: Draw`);
+//     i -= 1;
+// } else {
+//     console.log(`Game ${i + 1}: ${winner}`);
 // }
 
 
 
 function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3 + 1);
-    switch (computerChoice) {
+    let randomNumber = Math.floor(Math.random() * 3 + 1);
+    switch (randomNumber) {
         case 1:
-            computerChoice = 'rock';
-            break;
+            return 'rock';
         case 2:
-            computerChoice = 'paper';
-            break;
+            return 'paper';
         case 3:
-            computerChoice = 'scissors';
-            break;        
+            return 'scissors';      
     }
-    return computerChoice;
 }
 
 function playRound(player, computer) {
     // If playerSelection is rock
-    let winner;
     if (player === "rock") {
         if (computer === "paper") {
-            return winner = "Computer";
+            return "Computer";
         } else if (computer === "scissors") {
-            return winner = "Player";
+            return "Player";
         } else if (computer === "rock") {
-            return winner = "Draw";
+            return "Draw";
         }
     }
     // If playerSelection is paper
     else if (player === "paper") {
         if (computer === "paper") {
-            return winner = "Draw";
+            return "Draw";
         } else if (computer === "scissors") {
-            return winner = "Computer";
+            return "Computer";
         } else if (computer === "rock") {
-            return winner = "Player";
+            return "Player";
         }
     }
     // If playerSelection is scissors
     else if (player === "scissors") {
         if (computer === "paper") {
-            return winner = "Player";
+            return "Player";
         } else if (computer === "scissors") {
-            return winner = "Draw";
+            return "Draw";
         } else if (computer === "rock") {
-            return winner = "Computer";
+            return "Computer";
         }
+    }
+}
+
+function updateScore(roundWinner) {
+    if(roundWinner === "Player") {
+        return ++playerCurrentScore;
+    } else if(roundWinner === "Computer") {
+        return ++computerCurrentScore;
     }
 }
 
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+const scoreboard = document.querySelector('.scoreboard');
 
+let playerScore = document.querySelector('.user-score');
+let computerScore = document.querySelector('.computer-score'); 
 let playerSelection;
-let computerChoice = getComputerChoice();
-let winner;
+let computerChoice;
+let roundWinner;
+let playerCurrentScore = 0;
+let computerCurrentScore = 0;
+
+playerScore.textContent = 0;
+computerScore.textContent = 0;
 
 rock.addEventListener('click', function(){
+
     playerSelection = 'rock';
-    winner = playRound(playerSelection, computerChoice);
+    roundWinner = playRound(playerSelection, computerChoice);
 });
 paper.addEventListener('click', function(){
+
     playerSelection = 'paper';
-    winner = playRound(playerSelection, computerChoice);
+    roundWinner = playRound(playerSelection, computerChoice);
 });
 scissors.addEventListener('click', function(){
+    computerChoice = getComputerChoice();
     playerSelection = 'scissors';
-    winner = playRound(playerSelection, computerChoice);
+    roundWinner = playRound(playerSelection, computerChoice);
+    console.log(roundWinner);
+    if (roundWinner === "Player") {
+        playerCurrentScore = updateScore(roundWinner);
+        playerScore.textContent = playerCurrentScore;
+    } else if(roundWinner === "Computer") {
+        computerCurrentScore = updateScore(roundWinner);
+        computerScore.textContent = computerCurrentScore;
+    }
 });
-
